@@ -244,3 +244,27 @@ function sendEmailBitcoinPricesPdfAttachment() {
     GmailApp.sendEmail(to, 'Bitcoin prices', 'Attached prices in PDF',
         { attachments: [file], name: 'BitcoinPrices via AppsScript' });
 }
+
+function FIRSTDAYOFTHEMONTH(year) {
+    var array = [];
+
+    for (var m = 0; m <= 11; m++) {
+        var firstDay = new Date(year, m, 1);
+
+        var dayName = '';
+
+        switch (firstDay.getDay()) {
+            case 0: dayName = 'Sunday'; break;
+            case 1: dayName = 'Monday'; break;
+            case 2: dayName = 'Tuesday'; break;
+            case 3: dayName = 'Wednesday'; break;
+            case 4: dayName = 'Thursday'; break;
+            case 5: dayName = 'Friday'; break;
+            case 6: dayName = 'Saturday'; break;
+        }
+
+        array.push([(m + 1) + '/1/' + year, dayName]);
+    }
+
+    return array;
+}
