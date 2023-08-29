@@ -101,3 +101,13 @@ function unhideRowsColumnsActiveSheet() {
     sheet.unhideRow(range);
     sheet.unhideColumn(range);
 }
+
+// unhide all rows and columns in data ranges of entire Google Sheet
+function unhideRowsColumnsGlobal() {
+    var sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
+    sheets.forEach(function (sheet) {
+        var range = sheet.getDataRange();
+        sheet.unhideRow(range);
+        sheet.unhideColumn(range);
+    });
+};
