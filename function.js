@@ -79,3 +79,17 @@ function formulasToValuesGlobal() {
         range.copyValuesToRange(sheet, 1, range.getLastColumn(), 1, range.getLastRow());
     });
 };
+
+// sort sheets alphabetically
+function sortSheets() {
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var sheets = spreadsheet.getSheets();
+    var sheetNames = [];
+    sheets.forEach(function (sheet, i) {
+        sheetNames.push(sheet.getName());
+    });
+    sheetNames.sort().forEach(function (sheet, i) {
+        spreadsheet.getSheetByName(sheet).activate();
+        spreadsheet.moveActiveSheet(i + 1);
+    });
+};
