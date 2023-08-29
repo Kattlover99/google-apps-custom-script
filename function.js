@@ -30,3 +30,13 @@ function distanceBetweenPoints(start_point, end_point) {
     const distance = route.legs[0].distance.text;
     return distance;
 }
+
+// function to save data
+function saveData() {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = ss.getSheets()[0];
+    const url = sheet.getRange('Sheet1!A1').getValue();
+    const follower_count = sheet.getRange('Sheet1!B1').getValue();
+    const date = sheet.getRange('Sheet1!C1').getValue();
+    sheet.appendRow([url, follower_count, date]);
+}
