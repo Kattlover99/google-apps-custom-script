@@ -268,3 +268,29 @@ function FIRSTDAYOFTHEMONTH(year) {
 
     return array;
 }
+
+function CustomCSVImport(url, columns) {
+
+    var csvContent = UrlFetchApp.fetch(url).getContentText();
+    var csvData = Utilities.parseCsv(csvContent);
+
+    // Remove all white spaces, change to lower case, and split.  
+    var requiredColumns = columns.split(",");
+
+    // Get the indexes of required columns
+    var indexesOfRequiredColumns = [];
+
+    if (requiredColumns.length > 0) {
+        for (var i = 0; i < csvData[0].length; i++) {
+            if (requiredColumns.includes((csvData[0][i]))) {
+                indexesOfRequiredColumns.push(i);
+            }
+        }
+    }
+
+    if (indexesOfRequiredColumns.length > 0) {
+        return csvData.map(r => indexesOfRequiredColumns.map(i => r[i]));
+    }
+
+    return csvData;
+}
