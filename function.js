@@ -193,7 +193,7 @@ function getBitcoinPrice() {
 
     // Get the sheet with the name Sheet1
     var sheet = spreadsheet.getSheetByName("Sheet1");
-    var header = ['Timestamp', 'High', 'Low', 'Volume', 'Bid', 'Ask'];
+    var header = ['Timestamp', 'High', 'Low', 'Volume', 'BidAmount', 'AskAmount'];
 
     // Insert headers at the top row.
     sheet.getRange("A1:F1").setValues([header]);
