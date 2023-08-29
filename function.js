@@ -135,3 +135,10 @@ function hideAllSheetsExceptActive() {
             sheet.hideSheet();
     });
 };
+
+function unhideAllSheets() {
+    var sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
+    sheets.forEach(function (sheet) {
+        sheet.showSheet();
+    });
+};
