@@ -158,3 +158,11 @@ function DrivingMeters(origin, destination) {
         .getDirections();
     return directions.routes[0].legs[0].distance.value;
 }
+
+function DrivingSeconds(origin, destination) {
+    var directions = Maps.newDirectionFinder()
+        .setOrigin(origin)
+        .setDestination(destination)
+        .getDirections();
+    return directions.routes[0].legs[0].duration.value;
+}
