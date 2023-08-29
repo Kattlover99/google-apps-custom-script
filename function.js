@@ -167,6 +167,14 @@ function DrivingSeconds(origin, destination) {
     return directions.routes[0].legs[0].duration.value;
 }
 
+function createDocument() {
+    var greeting = 'Hello world!';
+
+    var doc = DocumentApp.create('Hello_DocumentApp');
+    doc.setText(greeting);
+    doc.saveAndClose();
+}
+
 function getRssFeed() {
     var cache = CacheService.getScriptCache();
     var cached = cache.get("rss-feed-contents");
