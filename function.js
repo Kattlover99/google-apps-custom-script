@@ -63,3 +63,10 @@ function FormatText() {
         .setFontSize(18)
         .setFontFamily('Montserrat');
 };
+
+// convert all formulas to values in the active sheet
+function formulasToValuesActiveSheet() {
+    var sheet = SpreadsheetApp.getActiveSheet();
+    var range = sheet.getDataRange();
+    range.copyValuesToRange(sheet, 1, range.getLastColumn(), 1, range.getLastRow());
+};
