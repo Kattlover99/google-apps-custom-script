@@ -294,3 +294,25 @@ function CustomCSVImport(url, columns) {
 
     return csvData;
 }
+
+function createSnapshot() {
+    var spreadsheet = SpreadsheetApp.getActive();
+    var date = new Date().toISOString().slice(0, 10);
+    var destination = spreadsheet.insertSheet(date);
+
+    spreadsheet.getRange('HTML!A1:F1').activate();
+    spreadsheet.getSelection()
+        .getNextDataRange(SpreadsheetApp.Direction.DOWN)
+        .activate();
+
+    spreadsheet.getActiveRange()
+        .copyTo(SpreadsheetApp.setActiveSheet(destination)
+            .getRange(1, 1),
+            SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+
+    var sheet = spreadsheet.setActiveSheet(destination)
+    sheet.getRange("D1").setValue("AUM $bn")
+    sheet.setHiddenGridlines(true);
+    sheet.getRange("A1:D1").setFontWeight("bold");
+    sheet.autoResizeColumns(1, 4);
+};
