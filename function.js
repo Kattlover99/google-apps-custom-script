@@ -150,3 +150,11 @@ function resetFilter() {
     range.getFilter().remove();
     range.createFilter();
 }
+
+function DrivingMeters(origin, destination) {
+    var directions = Maps.newDirectionFinder()
+        .setOrigin(origin)
+        .setDestination(destination)
+        .getDirections();
+    return directions.routes[0].legs[0].distance.value;
+}
