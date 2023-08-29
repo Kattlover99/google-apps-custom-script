@@ -111,3 +111,11 @@ function unhideRowsColumnsGlobal() {
         sheet.unhideColumn(range);
     });
 };
+
+// set all Sheets tabs to red
+function setTabColor() {
+    var sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
+    sheets.forEach(function (sheet) {
+        sheet.setTabColor("ff0000");
+    });
+};
