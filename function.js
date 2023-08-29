@@ -46,5 +46,9 @@ function insertSymbol() {
     // add symbol at the cursor position
     const cursor = DocumentApp.getActiveDocument().getCursor();
     cursor.insertText('§§');
+}
 
+function logTimeRightNow() {
+    const timestamp = new Date();
+    Logger.log(timestamp);
 }
