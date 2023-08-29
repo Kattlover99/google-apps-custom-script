@@ -338,3 +338,10 @@ function createColumnChart() {
         .build();
     sheet.insertChart(chart);
 };
+
+function createPresentation() {
+    var templateId = "insert_your_template_presentation_id_here";
+    var template = DriveApp.getFileById(templateId);
+    var copy = template.makeCopy("Weekly report " + date).getId();
+    var presentation = SlidesApp.openById(copy);
+}
