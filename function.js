@@ -93,3 +93,11 @@ function sortSheets() {
         spreadsheet.moveActiveSheet(i + 1);
     });
 };
+
+// unhide all rows and columns in current Sheet data range
+function unhideRowsColumnsActiveSheet() {
+    var sheet = SpreadsheetApp.getActiveSheet();
+    var range = sheet.getDataRange();
+    sheet.unhideRow(range);
+    sheet.unhideColumn(range);
+}
