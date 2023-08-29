@@ -235,3 +235,12 @@ function getBitcoinPrice() {
         Logger.log(response);
     }
 }
+
+function sendEmailBitcoinPricesPdfAttachment() {
+    var file = SpreadsheetApp.getActiveSpreadsheet().getAs(MimeType.PDF);
+
+    var to = 'youremail@domain.com'; // change to yours
+
+    GmailApp.sendEmail(to, 'Bitcoin prices', 'Attached prices in PDF',
+        { attachments: [file], name: 'BitcoinPrices via AppsScript' });
+}
