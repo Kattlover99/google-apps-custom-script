@@ -187,3 +187,51 @@ function getRssFeed() {
     cache.put("rss-feed-contents", contents, 1500); // cache for 25 minutes
     return contents;
 }
+
+function getBitcoinPrice() {
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+
+    // Get the sheet with the name Sheet1
+    var sheet = spreadsheet.getSheetByName("Sheet1");
+    var header = ['Timestamp', 'High', 'Low', 'Volume', 'Bid', 'Ask'];
+
+    // Insert headers at the top row.
+    sheet.getRange("A1:F1").setValues([header]);
+
+    var url = 'https://www.bitstamp.net/api/ticker/';
+
+    var response = UrlFetchApp.fetch(url);
+
+    // Proceed if no error occurred.
+    if (response.getResponseCode() == 200) {
+
+        var json = JSON.parse(response);
+        var result = [];
+
+        // Timestamp
+        result.push(new Date(json.timestamp *= 1000));
+
+        // High
+        result.push(json.high);
+
+        // Low
+        result.push(json.low);
+
+        // Volume
+        result.push(json.volume);
+
+        // Bid (highest buy order)
+        result.push(json.bid);
+
+        // Ask (lowest sell order)
+        result.push(json.ask);
+
+        // Append output to Bitcoin sheet.
+        sheet.appendRow(result);
+
+    } else {
+
+        // Log the response to examine the error
+        Logger.log(response);
+    }
+}
