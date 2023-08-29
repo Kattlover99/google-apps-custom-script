@@ -316,3 +316,25 @@ function createSnapshot() {
     sheet.getRange("A1:D1").setFontWeight("bold");
     sheet.autoResizeColumns(1, 4);
 };
+
+function createColumnChart() {
+    var spreadsheet = SpreadsheetApp.getActive();
+    spreadsheet.getRange('C1:D16').activate();
+    var sheet = spreadsheet.getActiveSheet();
+    chart = sheet.newChart()
+        .asColumnChart()
+        .addRange(spreadsheet.getRange('B1:D16'))
+        .setMergeStrategy(Charts.ChartMergeStrategy.MERGE_COLUMNS)
+        .setTransposeRowsAndColumns(false)
+        .setNumHeaders(-1)
+        .setHiddenDimensionStrategy(Charts.ChartHiddenDimensionStrategy.IGNORE_BOTH)
+        .setOption('useFirstColumnAsDomain', true)
+        .setOption('curveType', 'none')
+        .setOption('domainAxis.direction', 1)
+        .setOption('isStacked', 'absolute')
+        .setOption('series.0.color', '#0b5394')
+        .setOption('series.0.labelInLegend', 'AUM $bn')
+        .setPosition(19, 6, 15, 5)
+        .build();
+    sheet.insertChart(chart);
+};
