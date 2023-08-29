@@ -52,3 +52,14 @@ function logTimeRightNow() {
     const timestamp = new Date();
     Logger.log(timestamp);
 }
+
+/** @OnlyCurrentDoc */
+
+function FormatText() {
+    var spreadsheet = SpreadsheetApp.getActive();
+    spreadsheet.getActiveRangeList().setFontWeight('bold')
+        .setFontStyle('italic')
+        .setFontColor('#ff0000')
+        .setFontSize(18)
+        .setFontFamily('Montserrat');
+};
