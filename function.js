@@ -119,3 +119,11 @@ function setTabColor() {
         sheet.setTabColor("ff0000");
     });
 };
+
+// remove all Sheets tabs color
+function resetTabColor() {
+    var sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
+    sheets.forEach(function (sheet) {
+        sheet.setTabColor(null);
+    });
+};
