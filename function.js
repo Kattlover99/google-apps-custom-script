@@ -127,3 +127,11 @@ function resetTabColor() {
         sheet.setTabColor(null);
     });
 };
+
+function hideAllSheetsExceptActive() {
+    var sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
+    sheets.forEach(function (sheet) {
+        if (sheet.getName() != SpreadsheetApp.getActiveSheet().getName())
+            sheet.hideSheet();
+    });
+};
