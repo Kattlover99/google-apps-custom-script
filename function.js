@@ -142,3 +142,11 @@ function unhideAllSheets() {
         sheet.showSheet();
     });
 };
+
+// reset all filters for a data range on current Sheet
+function resetFilter() {
+    var sheet = SpreadsheetApp.getActiveSheet();
+    var range = sheet.getDataRange();
+    range.getFilter().remove();
+    range.createFilter();
+}
