@@ -40,3 +40,11 @@ function saveData() {
     const date = sheet.getRange('Sheet1!C1').getValue();
     sheet.appendRow([url, follower_count, date]);
 }
+
+// code to insert the symbol
+function insertSymbol() {
+    // add symbol at the cursor position
+    const cursor = DocumentApp.getActiveDocument().getCursor();
+    cursor.insertText('§§');
+
+}
