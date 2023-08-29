@@ -345,3 +345,8 @@ function createPresentation() {
     var copy = template.makeCopy("Weekly report " + date).getId();
     var presentation = SlidesApp.openById(copy);
 }
+
+
+function autoResizeSingleColumn() {
+    SpreadsheetApp.getActiveSheet().autoResizeColumn(1);
+}
